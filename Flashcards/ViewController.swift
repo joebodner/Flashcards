@@ -58,5 +58,24 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         questionLabel.text = "Question \(CardCollection.instance.currentIndex + 1)/\(CardCollection.instance.cards.count)"
     }
 
+    @IBAction func submitButtonPressed(_ sender: Any) {
+        var alert : UIAlertController
+        
+        if CardCollection.instance.checkAnswer(answerPickerView.selectedRow(inComponent:0)) {
+        //if the answer is correct
+        alert = UIAlertController(title:"Correct", message: "Correct Answer!", preferredStyle: UIAlertControllerStyle.alert)
+        self.present(alert, animated:true)
+        }
+        else {
+            alert = UIAlertController(title:"Incorrect", message: "Incorrect Answer!", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "tragic", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: false)
+        }
+        
+    }
+    
+    
+    
+    
 }
 
